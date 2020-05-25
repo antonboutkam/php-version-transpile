@@ -1,5 +1,5 @@
 {
-	"name": "hurah/php-typed-property-remover",
+	"name": "hurah/php-typed-property-toggle",
 	"description": "Simple cli utility to comment out typed properties so you can code in php7.4 and deploy on an older php version.",
 	"type": "library",
 	"require": {
