@@ -1,0 +1,33 @@
+{
+	"name": "hurah/php-typed-property-remover",
+	"description": "Simple cli utility to comment out typed properties so you can code in php7.4 and deploy on an older php version.",
+	"type": "library",
+	"require": {
+		"symfony/console": "^5.1@dev",
+		"psr/log": "^1.1@dev",
+		"monolog/monolog": "^2.0@dev"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9.2@dev"
+	},
+	"authors": [
+		{
+			"name": "Anton Boutkam",
+			"email": "anton@nui-boutkam.nl"
+		}
+	],
+	"minimum-stability": "dev",
+	"autoload-dev": {
+		"psr-4": {
+			"Test\\": "tests"
+		}
+	},
+	"bin": [
+		"bin/transpile"
+	],
+	"autoload": {
+		"psr-4": {
+			"Hurah\\Transpile\\": "src/Transpile"
+		}
+	}
+}
