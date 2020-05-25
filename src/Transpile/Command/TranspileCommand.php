@@ -20,8 +20,8 @@ final class TranspileCommand extends Command
             ->setDescription('Removes typed properties from classes to make code compatible with php 7.3 or 7.4')
             ->addArgument('action', InputArgument::REQUIRED, 'Options are 7.3 or 7.4')
 
-            ->addArgument('input-dir', InputArgument::REQUIRED, 'Input directory, defaults to ./src')
-            ->addArgument('output-dir', InputArgument::REQUIRED, 'Output directory, defaults to ./dist')
+            ->addArgument('input-dir', InputArgument::OPTIONAL, 'Input directory, defaults to ./src')
+            ->addArgument('output-dir', InputArgument::OPTIONAL, 'Output directory, defaults to ./dist')
 
             ->setHelp('This command removes typed properties by commenting them out and adds type properties by uncommenting out.');
     }
