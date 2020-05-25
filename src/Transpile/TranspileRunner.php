@@ -50,12 +50,12 @@ final class TranspileRunner
             $sSourceFileName = $fileInfo->getPathname();
             $sDestinationFileName = str_replace($this->sRootSrc, $this->sRootDest, $sSourceFileName);
             $this->makeFileDir($sDestinationFileName);
-            $sDestinationFileContent = $this->compile($sSourceFileName, $sDestinationFileName);
+            $sDestinationFileContent = $this->transpile($sSourceFileName);
 
             $this->saveFile($sDestinationFileName, $sDestinationFileContent);
         }
     }
-    private function compile(string $sSourceFileName, string $sDestFileName):string
+    private function transpile(string $sSourceFileName):string
     {
         $oCompiler = new Transpiler();
         $this->getLogger()->info("Transpiling $sSourceFileName");
@@ -64,7 +64,7 @@ final class TranspileRunner
 
     public function run():void
     {
-        $this->runRecursive($this->sRootSrc, $this->sRootDest);
+        $this->runRecursive($this->sRootSrc);
         $this->getLogger()->info("All done");
     }
 }

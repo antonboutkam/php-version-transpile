@@ -19,7 +19,11 @@ final class TranspileCommand extends Command
         $this
             ->setDescription('Removes typed properties from classes to make code compatible with php 7.3 or 7.4')
             ->addArgument('action', InputArgument::REQUIRED, 'Options are 7.3 or 7.4')
-            ->setHelp('This command makes the code compatible with php 7.3.');
+
+            ->addArgument('input-dir', InputArgument::REQUIRED, 'Input directory, defaults to ./src')
+            ->addArgument('output-dir', InputArgument::REQUIRED, 'Output directory, defaults to ./dist')
+
+            ->setHelp('This command removes typed properties by commenting them out and adds type properties by uncommenting out.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -32,6 +36,9 @@ final class TranspileCommand extends Command
         $oLogger = new ConsoleLogger($output, $verbosityLevelMap);
 
         $sAction = $input->getArgument('action');
+        $sInputDirectory = $input->getArgument('input-dir') ?? './src';
+        $sOutputDirectory = $input->getArgument('output-dir') ?? './dist';
+
         $aVersionMap = [
             '7.3' => Transpiler::PHP7_3,
             '7.4' => Transpiler::PHP7_4,
@@ -44,7 +51,7 @@ final class TranspileCommand extends Command
 
         $oLogger->info("Transpiling to php version: $sAction");
 
-        $oCompileRunner = new TranspileRunner($oLogger, "../src", "../dist", $aVersionMap[$sAction]);
+        $oCompileRunner = new TranspileRunner($oLogger, $sInputDirectory, $sOutputDirectory, $aVersionMap[$sAction]);
         $oCompileRunner->run();
 
         return 0;
