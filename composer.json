@@ -1,6 +1,6 @@
 {
 	"name": "hurah/php-typed-property-toggle",
-	"description": "Simple cli utility to comment out typed properties so you can code in php7.4 and deploy on an older php version.",
+	"description": "Comment / uncomment PHP typed properties for your project.",
 	"type": "library",
 	"require": {
 		"symfony/console": "^5.1@dev",
@@ -29,5 +29,6 @@
 		"psr-4": {
 			"Hurah\\Transpile\\": "src/Transpile"
 		}
-	}
+	},
+	"license" : "MIT"
 }
