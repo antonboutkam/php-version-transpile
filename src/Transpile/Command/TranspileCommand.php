@@ -1,6 +1,7 @@
 <?php
 namespace Hurah\Transpile\Command;
 
+use Composer\Autoload\ClassLoader;
 use Hurah\Transpile\Transpiler;
 use Hurah\Transpile\TranspileRunner;
 use Psr\Log\LogLevel;
@@ -35,9 +36,12 @@ final class TranspileCommand extends Command
         ];
         $oLogger = new ConsoleLogger($output, $verbosityLevelMap);
 
+        $oReflector = new \ReflectionClass(ClassLoader::class);
+        $sRootDir = dirname($oReflector->getFileName(), 2);
+
         $sAction = $input->getArgument('action');
-        $sInputDirectory = $input->getArgument('input-dir') ?? './src';
-        $sOutputDirectory = $input->getArgument('output-dir') ?? './dist';
+        $sInputDirectory = $input->getArgument('input-dir') ?? $sRootDir . '/src';
+        $sOutputDirectory = $input->getArgument('output-dir') ?? $sRootDir . '/dist';
 
         $aVersionMap = [
             '7.3' => Transpiler::PHP7_3,
