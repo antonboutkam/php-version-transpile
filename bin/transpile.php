@@ -5,8 +5,7 @@ if(file_exists('../vendor/autoload.php'))
 }
 else
 {
-    require_once '../../../../autoload.php';
-
+    require_once dirname(__DIR__, 3) . '/autoload.php';
 }
 
 use Hurah\Transpile\Command\TranspileCommand;
