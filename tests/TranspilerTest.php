@@ -32,6 +32,7 @@ class TranspilerTest extends TestCase
     {
         $oTranspiler = new Transpiler();
         $sPhp7_4_content = $oTranspiler->transpileString($this->php7_3content, Transpiler::PHP7_4);
+
         $this->assertTrue($sPhp7_4_content === $this->php7_4content);
     }
 

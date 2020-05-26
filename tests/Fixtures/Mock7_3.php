@@ -11,7 +11,7 @@ class Mock
     public static /*bool*/ $someBool;
     static public /*Logger*/ $oLogger;
     static public /*array*/ $aWhatever = [];
-    private /*IResult*/ $fakeResult;
+    private /*IScrapedProduct*/ $fakeResult;
     protected /*Factory*/ $factory;
     public /*ScraperOptions*/ $scraperOptions;
 

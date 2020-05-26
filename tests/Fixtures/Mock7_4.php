@@ -12,7 +12,7 @@ class Mock
     static public Logger $oLogger;
     static public array $aWhatever = [];
     private IScrapedProduct $fakeResult;
-    protected ScraperFactory $factory;
+    protected Factory $factory;
     public ScraperOptions $scraperOptions;
 
     public function __construct()

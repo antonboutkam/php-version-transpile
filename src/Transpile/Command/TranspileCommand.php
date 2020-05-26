@@ -36,12 +36,10 @@ final class TranspileCommand extends Command
         ];
         $oLogger = new ConsoleLogger($output, $verbosityLevelMap);
 
-        $oReflector = new \ReflectionClass(ClassLoader::class);
-        $sRootDir = dirname($oReflector->getFileName(), 2);
-
+        $sProjectRoot = dirname(__DIR__, 3);
         $sAction = $input->getArgument('action');
-        $sInputDirectory = $input->getArgument('input-dir') ?? $sRootDir . '/src';
-        $sOutputDirectory = $input->getArgument('output-dir') ?? $sRootDir . '/dist';
+        $sInputDirectory = $input->getArgument('input-dir') ?? $sProjectRoot . '/src';
+        $sOutputDirectory = $input->getArgument('output-dir') ?? $sProjectRoot . '/dist';
 
         $aVersionMap = [
             '7.3' => Transpiler::PHP7_3,
