@@ -1,5 +1,13 @@
 <?php
-require dirname(__DIR__) . '/vendor/autoload.php';
+if(file_exists('../vendor/autoload.php'))
+{
+    require '../vendor/autoload.php';
+}
+else
+{
+    require '../../vendor/autoload.php';
+
+}
 
 use Hurah\Transpile\Command\TranspileCommand;
 use Symfony\Component\Console\Application;
